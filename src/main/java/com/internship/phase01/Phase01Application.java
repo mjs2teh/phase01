@@ -19,14 +19,12 @@ public class Phase01Application {
     public static void main(String[] args) throws IOException {
 
         SpringApplication.run(Phase01Application.class, args);
+
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("C:\\Users\\Mehdi\\IdeaProjects\\phase01\\src\\main\\java\\com\\internship\\phase01\\data\\EmployeeData.json");
-        List<Employee> employee = objectMapper.readValue(file, new TypeReference<List<Employee>>(){});
-        log.info(employee.toString());
+        List<Employee> employee = objectMapper.readValue(new File("src/main/java/com/internship/phase01/data/EmployeeData.json"),
+                new TypeReference<List<Employee>>(){});
         XmlMapper xmlMapper = new XmlMapper();
-        //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        File file2 = new File("C:\\Users\\Mehdi\\IdeaProjects\\phase01\\src\\main\\java\\com\\internship.\\phase01\\data\\EmployeeData.xml");
-        xmlMapper.writeValue(file2, employee);
+        xmlMapper.writeValue(new File("src/main/java/com/internship/phase01/data/EmployeeData.xml"), employee);
         System.out.println("ok");
     }
 
